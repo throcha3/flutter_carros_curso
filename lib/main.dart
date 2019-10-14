@@ -1,5 +1,5 @@
+import 'package:flutter_carros_curso/splash_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_carros_curso/pages/login/login_page.dart';
 
 void main() => runApp(MyApp());
 
@@ -8,12 +8,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Cars',
       theme: ThemeData(
-          primarySwatch: Colors.deepPurple,
-          brightness: Brightness.dark
+        primarySwatch: Colors.blue,
+        brightness: Brightness.light,
+        scaffoldBackgroundColor: Colors.white
       ),
-      home: LoginPage(),
+      home: SplashPage(),
     );
   }
 }

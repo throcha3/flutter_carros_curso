@@ -1,10 +1,8 @@
-
+import 'dart:convert';
 
 import 'package:flutter_carros_curso/pages/api_response.dart';
 import 'package:flutter_carros_curso/pages/login/usuario.dart';
-
 import 'package:http/http.dart' as http;
-import 'dart:convert';
 
 class LoginApi {
   static Future<ApiResponse<Usuario>> login(String login, String senha) async {
@@ -38,7 +36,7 @@ class LoginApi {
         return ApiResponse.ok(user);
       }
 
-      return (mapResponse["error"]);
+      return ApiResponse.error(mapResponse["error"]);
     } catch(error, exception) {
       print("Erro no login $error > $exception");
 

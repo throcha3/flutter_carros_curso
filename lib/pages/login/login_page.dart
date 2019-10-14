@@ -1,9 +1,5 @@
-import 'dart:async';
-
-import 'package:flutter_carros_curso/drawer_list.dart';
 import 'package:flutter_carros_curso/pages/api_response.dart';
-import 'package:flutter_carros_curso/pages/carro/home_page.dart';
-import 'package:flutter_carros_curso/pages/login/login_api.dart';
+import 'package:flutter_carros_curso/pages/carros/home_page.dart';
 import 'package:flutter_carros_curso/pages/login/login_bloc.dart';
 import 'package:flutter_carros_curso/pages/login/usuario.dart';
 import 'package:flutter_carros_curso/utils/alert.dart';
@@ -32,12 +28,7 @@ class _LoginPageState extends State<LoginPage> {
   void initState() {
     super.initState();
 
-    Future<Usuario> future = Usuario.get();
-    future.then((Usuario user) {
-      if (user != null) {
-        push(context, HomePage(), replace: true);
-      }
-    });
+
   }
 
   @override
@@ -61,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
               "Login",
               "Digite o login",
               controller: _tLogin,
-              validator: _validateLogin,
+              validator: (s) => _validateLogin(s),
               keyboardType: TextInputType.emailAddress,
               textInputAction: TextInputAction.next,
               nextFocus: _focusSenha,
@@ -80,16 +71,16 @@ class _LoginPageState extends State<LoginPage> {
               height: 20,
             ),
             StreamBuilder<bool>(
-                stream: _bloc.stream,
-                initialData: false,
-                builder: (context, snapshot) {
-                  return AppButton(
-                    "Login",
-                    onPressed: _onClickLogin,
-                    showProgress: snapshot.data,
-                  );
-                }
-            )
+              stream: _bloc.stream,
+              initialData: false,
+              builder: (context, snapshot) {
+                return AppButton(
+                  "Login",
+                  onPressed: _onClickLogin,
+                  showProgress: snapshot.data,
+                );
+              }
+            ),
           ],
         ),
       ),
@@ -106,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
 
     print("Login: $login, Senha: $senha");
 
-    ApiResponse response = await _bloc.login(login, senha);
+    ApiResponse<Usuario> response = await _bloc.login(login, senha);
 
     if (response.ok) {
 //      Usuario user = response.result;

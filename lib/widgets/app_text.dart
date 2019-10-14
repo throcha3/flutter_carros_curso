@@ -12,16 +12,16 @@ class AppText extends StatelessWidget {
   FocusNode nextFocus;
 
   AppText(
-      this.label,
-      this.hint, {
-        this.password = false,
-        this.controller,
-        this.validator,
-        this.keyboardType,
-        this.textInputAction,
-        this.focusNode,
-        this.nextFocus,
-      });
+    this.label,
+    this.hint, {
+    this.password = false,
+    this.controller,
+    this.validator,
+    this.keyboardType,
+    this.textInputAction,
+    this.focusNode,
+    this.nextFocus,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -38,16 +38,16 @@ class AppText extends StatelessWidget {
         }
       },
       style: TextStyle(
-        fontSize: 25,
+        fontSize: 22,
         color: Colors.blue,
       ),
       decoration: InputDecoration(
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(1)
-        ),
+//        border: OutlineInputBorder(
+//          borderRadius: BorderRadius.circular(16)
+//        ),
         labelText: label,
         labelStyle: TextStyle(
-          fontSize: 25,
+          fontSize: 22,
           color: Colors.grey,
         ),
         hintText: hint,

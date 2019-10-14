@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 Text text(
-    String s, {
-      double fontSize = 16,
-      color = Colors.grey,
-      bold = false,
-    }) {
+  String s, {
+  double fontSize = 16,
+  color = Colors.black,
+  bold = false,
+}) {
   return Text(
     s ?? "",
     style: TextStyle(
